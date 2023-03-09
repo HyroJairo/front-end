@@ -14,12 +14,12 @@ function App() {
   });
   
   return (
-    <div className="App">
-      
-      {message.map((row,index) => (<div>
-        <Link to={`details/${index}`}>
+    <div className="w-full h-full flex flex-wrap justify-center">
+      {message.map((row,index) => (
+      <div className="m-8 flex">
+        <Link to={`details/${index}`} className='flex-col'>
           <img src={`${arr[index]}`} alt={`${row.champ_name}-${index}`}/>
-          <p>{row.champ_name}</p>
+          <p className="text-center">{row.champ_name}</p>
         </Link>
         </div>))}
     </div>

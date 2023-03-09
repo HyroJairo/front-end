@@ -5,24 +5,25 @@ import {arr} from "./arr.js";
 
 const Details = () => {
     const  {id} = useParams()
-    const [message, setMessage] = useState([]);
+    const [champData, setChampData] = useState({});
 
     useEffect(() => {
         fetch('http://localhost:3000')
         .then((res) => res.json())
         .then((data) => {
-            setMessage(data)
+            setChampData(data[id])
         });
     }, []);
     
   return (
     <div>
-        {message &&
+        {champData &&
         <div>
-            <p>{message[id].champ_name}</p>
-            <img src={`${arr[id]}`} alt={`${message[id].champ_name}-${id}`}/>
+            <p>{champData.champ_name}</p>
+            <img src={`${arr[id]}`} alt={`${champData.champ_name}-${id}`}/>
         </div>
         }
+        <pre>{JSON.stringify(champData, 0, 4)}</pre>
     </div>
   )
 }
