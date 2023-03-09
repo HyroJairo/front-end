@@ -4,7 +4,7 @@ import {arr} from "./arr.js";
 import "./App.css";
 
 function App() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:3000')
@@ -13,13 +13,10 @@ function App() {
   });
   
   return (
+    
     <div className="App">
-
-      {message.map(row => (<p>{row.champ_name}</p>))}
-      {arr.map(image =>
-        // eslint-disable-next-line jsx-a11y/alt-text
-        <img src={`${image}`}/>)}
       
+      {message.map((row,index) => (<div><img src={`${arr[index]}`}/><p>{row.champ_name}</p></div>))}
     </div>
   );
 }
