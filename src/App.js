@@ -1,42 +1,27 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import {arr} from "./arr.js";
 
+import "./App.css";
 
-class App extends Component {
+function App() {
+  const [message, setMessage] = useState("");
 
-  constructor(props) {
-    super(props)
-    this.state = {
-       name: '',
-       rollno: ''
-    }
-  }
+  useEffect(() => {
+    fetch('http://localhost:3000')
+      .then((res) => res.json())
+      .then((data) => setMessage(data));
+  });
+  
+  return (
+    <div className="App">
 
-  handleChange = (event) => {
-    event.preventDefault();
-    const {name, value} = event.target;
-    this.setState({[name]:value});
-  }
-  render() {
-    return (
-      <div className='App'>
-        <form method='post' action='http://localhost:3000'>
-          <div>
-            <label htmlFor='name'>Enter Name: </label>
-            <input type='text' name='name' onChange={this.handleChange}/>
-          </div>
-          <div className='rollno'>
-            <label htmlFor='rollno'>Enter Rollno:</label>
-            <input type='text' name='rollno' onChange={this.handleChange}/>
-          </div>
-          <div className='submit'>
-            <input type='submit'/>
-          </div>
-        </form>
-      </div>
-    )
-  }
+      {message.map(row => (<p>{row.champ_name}</p>))}
+      {arr.map(image =>
+        // eslint-disable-next-line jsx-a11y/alt-text
+        <img src={`${image}`}/>)}
+      
+    </div>
+  );
 }
 
-
-export default App;
+export default App

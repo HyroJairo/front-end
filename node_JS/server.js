@@ -25,6 +25,7 @@ app.get('/', (req, res)=> {
     con.query("select * from champions;", function(err, result, fields) {
         if(err) throw err;
         res.json(result)
+       
     });
 })
 
