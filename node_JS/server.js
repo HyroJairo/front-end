@@ -22,13 +22,10 @@ con.connect(function(err) {
 });
 
 app.get('/', (req, res)=> {
-    res.json('OK');
-    console.log('sigh');
-    con.query("select * from champions;", function(err, res, fields) {
+    con.query("select * from champions;", function(err, result, fields) {
         if(err) throw err;
-        console.log(res);
+        res.json(result)
     });
-    res.json('Form received')
 })
 
 app.listen(3000, ()=> {
