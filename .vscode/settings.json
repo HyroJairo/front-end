@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "lol-stat-database.clkvfbp0ta4r.us-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "lol",
+            "database": "mysql",
+            "username": "admin"
+        }
+    ]
+}
