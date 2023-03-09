@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {arr} from "./arr.js";
+import { Link } from "react-router-dom"
 
 import "./App.css";
 
@@ -13,10 +14,14 @@ function App() {
   });
   
   return (
-    
     <div className="App">
       
-      {message.map((row,index) => (<div><img src={`${arr[index]}`}/><p>{row.champ_name}</p></div>))}
+      {message.map((row,index) => (<div>
+        <Link to={`details/${index}`}>
+          <img src={`${arr[index]}`} alt={`${row.champ_name}-${index}`}/>
+          <p>{row.champ_name}</p>
+        </Link>
+        </div>))}
     </div>
   );
 }
