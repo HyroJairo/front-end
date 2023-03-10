@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom"
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 import {arr} from "./arr.js";
+import { items_srcs } from './item_srcs.js'
 
 
 const Details = () => {
@@ -10,6 +11,9 @@ const Details = () => {
     const [champData, setChampData] = useState({});
     const [counterOneId, setCounterOneId] = useState()
     const [counterTwoId, setCounterTwoId] = useState()
+    const [startingItemSrc, setStartingItemSrc] = useState()
+    const [firstItemSrc, setFirstItemSrc] = useState()
+    const [secondItemSrc, setSecondItemSrc] = useState()
 
 
     useEffect(() => {
@@ -33,6 +37,14 @@ const Details = () => {
                 }
             }, [])    
             setCounterTwoId(second_id)
+            const starting_re = new RegExp(`/${data[id].starter_item}_item.png/`.replaceAll(' ', '_'))
+            setStartingItemSrc(items_srcs.filter(x => x.match(starting_re))[0])
+
+            const first_re = new RegExp(`/${data[id].first_item}_item.png/`.replaceAll(' ', '_'))
+            setFirstItemSrc(items_srcs.filter(x => x.match(first_re))[0])
+
+            const second_re = new RegExp(`/${data[id].second_item}_item.png/`.replaceAll(' ', '_'))
+            setSecondItemSrc(items_srcs.filter(x => x.match(second_re))[0])
         });
     }, [id]);
     
@@ -96,9 +108,21 @@ const Details = () => {
             <div className='m-4 p-4 flex flex-col bg-slate-50 rounded-md shadow-xl'>
                 <h2 className='text-2xl'>Build</h2>
                 <div>
-                    <p className='text-lg m-2'>Starting Item: {champData.starter_item}</p>
-                    <p className='text-lg m-2'>First Item: {champData.first_item}</p>
-                    <p className='text-lg m-2'>Second Item: {champData.second_item}</p>
+                    <div className='flex items-center'>
+                        <p className='text-lg m-2'>Starting Item:</p>
+                        <img className='mx-2 2-8 h-8' src={startingItemSrc}/>
+                        <p>{champData.starter_item}</p>
+                    </div>
+                    <div className='flex items-center'>
+                        <p className='text-lg m-2'>First Item:</p>
+                        <img className='mx-2 2-8 h-8' src={firstItemSrc}/>
+                        <p>{champData.first_item}</p>
+                    </div>
+                    <div className='flex items-center'>
+                        <p className='text-lg m-2'>Second Item:</p>
+                        <img className='mx-2 2-8 h-8' src={secondItemSrc}/>
+                        <p>{champData.second_item}</p>
+                    </div>
                 </div>
             </div>
         </div>
