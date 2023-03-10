@@ -2,6 +2,7 @@ import React from 'react'
 import {useParams} from "react-router-dom"
 import { useEffect, useState } from 'react';
 import {arr} from "./arr.js";
+import Info from "./Info.js";
 
 const Details = () => {
     const  {id} = useParams()
@@ -16,14 +17,19 @@ const Details = () => {
     }, []);
     
   return (
-    <div>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
+
+{/* experiment */}
         {champData &&
-        <div>
-            <p>{champData.champ_name}</p>
-            <img src={`${arr[id]}`} alt={`${champData.champ_name}-${id}`}/>
-        </div>
+        <Info
+            title={`${champData.champ_name}`}
+            imageUrl={`${arr[id]}`}
+            body={champData}
+        />
         }
-        <pre>{JSON.stringify(champData, 0, 4)}</pre>
+        
+{/* end experiment */}
+        
     </div>
   )
 }
