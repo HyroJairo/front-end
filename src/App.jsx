@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {arr} from "./arr.js";
 import { Link } from "react-router-dom"
+// experimental
+import Card from "./Card.js"
 
 import "./App.css";
 
@@ -16,16 +18,24 @@ function App() {
   return (
     <div className="w-full h-full flex flex-wrap justify-center">
       <div className='bg-[url("https://images.hdqwalls.com/wallpapers/kaisa-league-of-legends-4k-artwork-v9.jpg")] h-1/2 w-full bg-cover bg-top p-16'>
-        <h1 className='text-white text-6xl font-bold'>This is League Of Legends!</h1>
-        <h2 className='text-white text-3xl font-light mt-5'>An info gallery of champions</h2>
+        <h1 className='text-white text-5xl font-bold'>This is an <br/>info gallery <br/>where you can<br/>find more about<br/> your champions!</h1>
+
       </div>
-      {message.map((row,index) => (
-      <div className="m-8 flex" > 
-        <Link to={`details/${index}`} className='flex-col' >
-          <img className='w-64 h-72' src={`${arr[index]}`} alt={`${row.champ_name}-${index}`} />
-          <p className="text-center">{row.champ_name}</p>
-        </Link>
-        </div>))}
+
+{/* experiment */}
+      {message.map((row, index) => (
+        <div>
+          <Link to={`details/${index}`}>
+            <Card
+            title={`${row.champ_name}`}
+            imageUrl={`${arr[index]}`}
+            body='champion'
+            />
+          </Link>
+        </div>    
+      ))}
+{/* end of experiment */}
+    
     </div>
   );
 }
