@@ -192,7 +192,7 @@ export const items_srcs = [
     "https://static.wikia.nocookie.net/leagueoflegends/images/c/c4/Iceborn_Gauntlet_item.png/",
     "https://static.wikia.nocookie.net/leagueoflegends/images/2/2b/Immortal_Shieldbow_item.png/",
     "https://static.wikia.nocookie.net/leagueoflegends/images/b/bc/Imperial_Mandate_item.png/",
-    "https://static.wikia.nocookie.net/leagueoflegends/images/c/c7/Jak'Sho%2C_The_Protean_item.png/",
+    "https://static.wikia.nocookie.net/leagueoflegends/images/c/c7/Jak'Sho,_The_Protean_item.png/",
     "https://static.wikia.nocookie.net/leagueoflegends/images/3/3d/Kraken_Slayer_item.png/",
     "https://static.wikia.nocookie.net/leagueoflegends/images/3/30/Liandry's_Anguish_item.png/",
     "https://static.wikia.nocookie.net/leagueoflegends/images/5/56/Locket_of_the_Iron_Solari_item.png/",
